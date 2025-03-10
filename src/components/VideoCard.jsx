@@ -1,7 +1,6 @@
 import React from "react";
 
 const VideoCard = ({ info }) => {
-  console.log(info);
   if (!info || !info.snippet || !info.statistics) {
     return <p>Loading...</p>;
   }
@@ -22,5 +21,14 @@ const VideoCard = ({ info }) => {
     </div>
   );
 };
+
+
+export const AdVideoCard = ( {info} ) => {
+  return(
+    <div className="m-1 p-1 border border-red-900">
+      <VideoCard info={info}/>
+    </div>
+  )
+}
 
 export default VideoCard;

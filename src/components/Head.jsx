@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { Link } from "react-router-dom";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Head = () => {
   const dispatch = useDispatch();
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    //Api call here
+    console.log(searchQuery);
+
+    getSearchSuggestions();
+  }, [searchQuery]);
+
+  const getSearchSuggestions = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const json = await data.json();
+    console.log(json[1]);
+  };
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
@@ -20,12 +35,12 @@ const Head = () => {
           alt="Menu"
         />
         <a href="/">
-        <div>
-        <img
-          className="h-8 mx-2"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/768px-YouTube_Logo_2017.svg.png"
-          alt="youtube-logo"
-          />
+          <div>
+            <img
+              className="h-8 mx-2"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/768px-YouTube_Logo_2017.svg.png"
+              alt="youtube-logo"
+            />
           </div>
         </a>
       </div>
@@ -33,6 +48,8 @@ const Head = () => {
         <input
           className="w-1/2 border border-gray-400 p-2 rounded-l-full"
           type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
         <button className="border border-gray-400 px-5 py-2 rounded-r-full bg-gray-100">
           🔍
