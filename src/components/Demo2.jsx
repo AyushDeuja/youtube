@@ -16,10 +16,10 @@ const Demo2 = () => {
   }, []);
 
   return (
-    <div className="m-4 p-2 bg-slate-50 border border-black w-96 h-96">
+    <div className="bg-slate-50 border border-black h-96 m-4 p-2 w-96">
       <div>
         <button
-          className="bg-green-100 p-2 m-4"
+          className="bg-green-100 m-4 p-2"
           onClick={() => {
             x = x + 1;
             console.log("x=", x);
@@ -27,22 +27,22 @@ const Demo2 = () => {
         >
           Increase x
         </button>
-        <span className="font-bold text-xl">Let = {x}</span>
+        <span className="text-xl font-bold">Let = {x}</span>
       </div>
       <div>
         <button
-          className="bg-green-100 p-2 m-4"
+          className="bg-green-100 m-4 p-2"
           onClick={() => {
             setY(y + 1);
           }}
         >
           Increase Y
         </button>
-        <span className="font-bold text-xl">State = {y}</span>
+        <span className="text-xl font-bold">State = {y}</span>
       </div>
       <div>
         <button
-          className="bg-green-100 p-2 m-4"
+          className="bg-green-100 m-4 p-2"
           onClick={() => {
             ref.current = ref.current + 1;
             console.log("ref = ", ref.current);
@@ -50,10 +50,11 @@ const Demo2 = () => {
         >
           Increase ref
         </button>
-        <span className="font-bold text-xl">Ref = {ref.current}</span>
+        <span className="text-xl font-bold">Ref = {ref.current}</span>
       </div>
       <button
-        className="bg-red-900 p-4 m-4 text-white font-bold rounded-lg"
+        className="bg-red-900 p-4 m-4 text-white font-bold rounded-sm
+        "
         onClick={() => {
           clearInterval(i.current);
         }}
